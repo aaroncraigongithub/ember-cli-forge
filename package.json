@@ -7,9 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "postinstall": "node scripts/build-forge.js"
   },
-  "repository": "",
+  "repository": "https://github.com/aarongraigongithub/ember-cli-forge",
   "engines": {
     "node": ">= 0.10.0"
   },
