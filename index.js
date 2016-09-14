@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-forge'
+  name: 'ember-cli-forge',
 
   included: function included(app) {
     this.app = app;
