@@ -1,26 +1,31 @@
 # Ember-cli-forge
 
-This README outlines the details of collaborating on this Ember addon.
+Wraps the [https://github.com/digitalbazaar/forge](forge Javascript encryption library) for use in your Ember app.
+
+Since `forge` does not provide a minified bower package out of the box, this addon provides a script which will build one for you.  
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+* `ember install ember-cli-forge`
+* `node node_modules/ember-cli-forge/scripts/build-forge.js`
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+See [https://github.com/digitalbazaar/forge](the forge Github page) for documentation on Forge.
 
-## Running Tests
+This addon exposes the `forge` library as a global variable, so you can simply use it wherever you need it, such as in this contrived example:
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+```
+import Ember from 'ember';
 
-## Building
+export default Ember.Component.extend({
 
-* `ember build`
-
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+  actions: {
+    encrypt() {
+      const val = this.$('#input-text').val();
+      const md = forge.md.sha1.create();
+      md.update(val, 'utf8');      
+      ...
+    }
+  }
+});
